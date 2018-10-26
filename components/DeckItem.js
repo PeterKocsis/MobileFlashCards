@@ -36,7 +36,6 @@ class DeckItem extends Component {
 }
 
 function mapStateToProps(decks, {navigation}){
-  debugger
   return {
     navigation,
     decks

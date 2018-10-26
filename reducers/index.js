@@ -3,7 +3,6 @@ import {ADD_DECK, ADD_QUESTION, DELETE_DECK, RECEIVE_ENTRIES} from '../actions/i
 function decks (state={}, action) {
   switch(action.type) {
     case ADD_DECK:{
-      debugger
       return {
         ...state,
         [action.deck.title]: action.deck
@@ -21,7 +20,6 @@ function decks (state={}, action) {
       return state;
     }
     case RECEIVE_ENTRIES:{
-      debugger
       return {
         ...action.decks
       }

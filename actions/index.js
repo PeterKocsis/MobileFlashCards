@@ -37,7 +37,7 @@ export function handleAddDeck(deck) {
   }
 }
 
-function addQuestion(deckId, question) {
+export function addQuestion(deckId, question) {
   return {
     type: ADD_QUESTION,
     question,

@@ -19,7 +19,6 @@ class AddDeck extends Component {
 
   onSubmit=()=>{
     const {decks, dispatch} = this.props;
-    debugger
     const deckData = {
         title : this.state.title,
         questions : []
@@ -43,7 +42,6 @@ class AddDeck extends Component {
 }
 
 function mapStateToProps(decks){
-  debugger
   return {
     decks,
   }

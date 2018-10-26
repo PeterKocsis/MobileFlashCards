@@ -4,15 +4,15 @@ import { View, TouchableOpacity, Text} from 'react-native';
 import styles from './../styles/index';
 
 class DeckView extends Component {
+
   render() {
-    const {deck} = this.props;
-    debugger
+    const {deck, navigation} = this.props;
     return(
       <View style={styles.container}>
         <Text>{deck.title}</Text>
         <Text>{`Number of cards: ${deck.questions.length}`}</Text>
-        <TouchableOpacity><Text>Add Card</Text></TouchableOpacity>
-        <TouchableOpacity><Text>Start Quize</Text></TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate('CreateCard', {deckId: deck.title})}><Text>Add Card</Text></TouchableOpacity>
+        <TouchableOpacity onPress={()=>navigation.navigate('Quize', {deckId: deck.title})}><Text>Start Quize</Text></TouchableOpacity>
       </View>
     )
   }
@@ -20,9 +20,9 @@ class DeckView extends Component {
 
 function mapStateToProps(decks, {navigation}){
   const {deckId} = navigation.state.params;
-  debugger
   return {
-    deck : decks[deckId]
+    deck : decks[deckId],
+    navigation
   }
 }
 

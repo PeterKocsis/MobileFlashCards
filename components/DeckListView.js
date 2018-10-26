@@ -5,6 +5,9 @@ import { _getDecks } from '../utils/api';
 import { createStackNavigator } from 'react-navigation';
 import DeckView from './DeckView';
 import DeckItem from './DeckItem';
+import CreateCard from './CreateCard';
+import Quize from './Quize';
+import QuizeResult from './QuizeResult';
 
 const StackNavigation = createStackNavigator({
   Decks: {
@@ -12,6 +15,15 @@ const StackNavigation = createStackNavigator({
   },
   DeckView: {
     screen: DeckView
+  },
+  CreateCard:{
+    screen: CreateCard
+  },
+  Quize: {
+    screen: Quize
+  },
+  QuizeResult: {
+    screen: QuizeResult
   }
 });
 
