@@ -22,14 +22,16 @@ class DeckItem extends Component {
 
   render(){
     const {decks} = this.props;
+    const noDeckinDecks = Object.getOwnPropertyNames(decks).length === 0;
+    debugger
     return(
       <View style={styles.container}>
-        {Object.getOwnPropertyNames(decks).length === 0 && (<Text>There is no available deck at the moment. You can create one on the "Add Deck" tab.</Text>)}
-        <FlatList
+        {noDeckinDecks ? (<Text>There is no available deck at the moment. You can create one on the "Add Deck" tab.</Text>)
+        :<FlatList
           data = {Object.keys(decks)}
           renderItem={this.renderItem}
           keyExtractor = {this.keyExtractor}>
-        </FlatList>
+        </FlatList>}
       </View>
     )
   }

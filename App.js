@@ -9,6 +9,7 @@ import AddDeck from './components/AddDeck';
 import { white, purple } from './utils/colors';
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import { createBottomTabNavigator } from 'react-navigation';
+import middleware from './middleware';
 
 const Tabs = createBottomTabNavigator({
   Decks: {
@@ -23,7 +24,7 @@ export default class App extends React.Component {
 
   render() {
     return (
-      <Provider store={createStore(reducer)}>
+      <Provider store={createStore(reducer, middleware)}>
         <Tabs />
       </Provider>
     );

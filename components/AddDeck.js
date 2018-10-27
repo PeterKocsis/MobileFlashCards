@@ -18,12 +18,12 @@ class AddDeck extends Component {
   }
 
   onSubmit=()=>{
-    const {decks, dispatch} = this.props;
+    const {dispatch} = this.props;
     const deckData = {
         title : this.state.title,
         questions : []
     };
-    _addDeck(decks);
+    _addDeck(deckData);
     dispatch(addDeck(deckData))
     this.setState(()=>({
       title :''

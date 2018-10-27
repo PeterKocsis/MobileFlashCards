@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { receiveDecks } from './../actions/index';
-import { _getDecks } from '../utils/api';
+import { handleReceiveDecks } from './../actions/index';
 import { createStackNavigator } from 'react-navigation';
 import DeckView from './DeckView';
 import DeckItem from './DeckItem';
@@ -30,10 +29,7 @@ const StackNavigation = createStackNavigator({
 class DeckListView extends Component {
 
   componentDidMount() {
-    _getDecks()
-      .then((results) => {
-        this.props.dispatch(receiveDecks(results));
-      })
+    this.props.dispatch(handleReceiveDecks());
   }
 
   render() {

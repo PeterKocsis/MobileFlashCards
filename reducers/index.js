@@ -1,13 +1,12 @@
-import {ADD_DECK, ADD_QUESTION, DELETE_DECK, RECEIVE_ENTRIES} from '../actions/index'
+import {ADD_DECK, ADD_QUESTION, DELETE_DECK, RECEIVE_DECKS} from '../actions/index'
 
 function decks (state={}, action) {
   switch(action.type) {
-    case ADD_DECK:{
+    case ADD_DECK:
       return {
         ...state,
         [action.deck.title]: action.deck
       }
-    }
     case ADD_QUESTION:
       return {
         ...state,
@@ -16,13 +15,8 @@ function decks (state={}, action) {
           questions : state[action.deckId].questions.concat([action.question])
         }
       }
-    case DELETE_DECK:{
-      return state;
-    }
-    case RECEIVE_ENTRIES:{
-      return {
-        ...action.decks
-      }
+    case RECEIVE_DECKS:{
+      return {...action.decks}
     }
     default:
       return state;

@@ -1,23 +1,30 @@
 import {AsyncStorage} from 'react-native';
 
-const DECKS_KEY = 'FlasCards:Decks'
+const DECKS_KEY = 'FlashCards:Decks'
 
 export function _getDecks() {
-  return AsyncStorage.getItem(DECKS_KEY)
-    .then((results)=>{
-      return JSON.parse(results);
-    })
-}
-
-export function _InitStore(defaultDecks){
-  return AsyncStorage.setItem(DECKS_KEY, JSON.stringify(defaultDecks));
+  return AsyncStorage.getAllKeys()
+    .then(keys => keys.filter(key=>key===DECKS_KEY))
+    .then((machingKeys)=>{
+      if(machingKeys.length > 0){
+        return AsyncStorage.getItem(DECKS_KEY)
+          .then(result=>JSON.parse(result));
+      }
+      else {
+        return AsyncStorage.setItem(DECKS_KEY, "{}")
+          .then(()=>{
+            return AsyncStorage.getItem(DECKS_KEY)
+              .then(result=>JSON.parse(result));
+          });
+      }
+    });
 }
 
 export function _addDeck(deck) {
-  const data = {
-    [deck.title] : deck
-  }
-  return AsyncStorage.setItem(DECKS_KEY, JSON.stringify(data));
+  return AsyncStorage.mergeItem(DECKS_KEY, JSON.stringify(
+    {
+      [deck.title]:deck
+    }));
 }
 
 export function _addQuestion(deck, question) {

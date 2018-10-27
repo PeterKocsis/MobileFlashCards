@@ -5,10 +5,10 @@ export const ADD_DECK = 'ADD_DECK';
 export const DELETE_DECK = 'DELETE_DECK';
 export const ADD_QUESTION = 'ADD_QUESTION';
 
-export function receiveDecks(entries) {
+function receiveDecks(decks) {
   return {
     type: RECEIVE_DECKS,
-    entries
+    decks
   }
 }
 
