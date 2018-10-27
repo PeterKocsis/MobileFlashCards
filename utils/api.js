@@ -37,3 +37,13 @@ export function _addQuestion(deck, question) {
     [deck.title]: modifiedDeck
   }));
 }
+
+export function _deleteDeck(deckId) {
+  return AsyncStorage.getItem(DECKS_KEY)
+    .then((result)=>{
+      const data = JSON.parse(result);
+      data[deckId] = undefined;
+      delete data[deckId];
+      AsyncStorage.setItem(DECKS_KEY, JSON.stringify(data));
+    })
+}

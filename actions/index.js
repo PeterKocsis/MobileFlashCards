@@ -1,4 +1,4 @@
-import { _getDecks, _addDeck, _addQuestion } from './../utils/api';
+import { _getDecks, _addDeck, _addQuestion, _deleteDeck } from './../utils/api';
 
 export const RECEIVE_DECKS = 'RECEIVE_DECKS';
 export const ADD_DECK = 'ADD_DECK';
@@ -54,9 +54,16 @@ export function handleAddQuestion(deckId, question) {
   }
 }
 
-export function deleteDeck(deckId) {
+function deleteDeck(deckId) {
   return {
     type: DELETE_DECK,
     deckId,
+  }
+}
+
+export function handleDeleteDeck(deckId){
+  return (dispatch) => {
+    return _deleteDeck(deckId)
+      .then(()=> dispatch(deleteDeck(deckId)));
   }
 }
