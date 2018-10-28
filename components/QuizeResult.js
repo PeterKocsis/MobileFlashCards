@@ -3,8 +3,13 @@ import { connect } from 'react-redux';
 import { Text, View, TouchableOpacity } from 'react-native';
 import styles from './../styles/index';
 import { StackActions } from 'react-navigation';
+import { clearLocalNotification } from './../utils/notificationHelper';
 
 class QuizeResult extends Component {
+
+  componentDidMount(){
+    clearLocalNotification();
+  }
 
   onQuizeRestart=()=>{
     const {deck} = this.props;
