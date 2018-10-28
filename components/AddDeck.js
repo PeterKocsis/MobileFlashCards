@@ -17,15 +17,18 @@ class AddDeck extends Component {
   }
 
   onSubmit=()=>{
-    const {dispatch} = this.props;
+    const {dispatch, navigation} = this.props;
     const deckData = {
         title : this.state.title,
         questions : []
     };
-    dispatch(handleAddDeck(deckData));
     this.setState(()=>({
-      title :''
+      title:''
     }));
+    Promise.resolve(dispatch(handleAddDeck(deckData)))
+      .then(()=>{
+        navigation.navigate('DeckView', {deckId: deckData.title});
+      });
   }
 
   render(){
@@ -39,10 +42,4 @@ class AddDeck extends Component {
   }
 }
 
-function mapStateToProps(decks){
-  return {
-    decks,
-  }
-}
-
-export default connect(mapStateToProps)(AddDeck);
+export default connect()(AddDeck);
