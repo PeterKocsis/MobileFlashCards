@@ -21,7 +21,7 @@ export function handleReceiveDecks() {
   }
 }
 
-export function addDeck(deck) {
+function addDeck(deck) {
   return {
     type: ADD_DECK,
     deck,

@@ -1,8 +1,7 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import { View, TextInput, TouchableOpacity, Text} from 'react-native';
-import { addDeck } from './../actions/index';
-import { _addDeck } from './../utils/api';
+import { handleAddDeck } from './../actions/index';
 import styles from './../styles/index';
 
 class AddDeck extends Component {
@@ -23,8 +22,7 @@ class AddDeck extends Component {
         title : this.state.title,
         questions : []
     };
-    _addDeck(deckData);
-    dispatch(addDeck(deckData))
+    dispatch(handleAddDeck(deckData));
     this.setState(()=>({
       title :''
     }));
