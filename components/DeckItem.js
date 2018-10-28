@@ -2,8 +2,13 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { View, Text, TouchableOpacity, FlatList } from 'react-native';
 import styles from './../styles/index';
+import { handleReceiveDecks } from './../actions/index';
 
 class DeckItem extends Component {
+  componentDidMount() {
+    this.props.dispatch(handleReceiveDecks());
+  }
+
   renderItem=({item})=>{
     const {decks, navigation} = this.props;
     const deck = decks[item];
