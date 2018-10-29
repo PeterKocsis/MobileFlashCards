@@ -27,8 +27,8 @@ class CreateCard extends Component {
   onSubmit =()=>{
     const {dispatch, deck} = this.props;
     const question = {
-      question: this.state.question,
-      answer: this.state.answer
+      question: this.state.question.trim(),
+      answer: this.state.answer.trim()
     };
     _addQuestion(deck, question);
     dispatch(addQuestion(deck.title, question));
@@ -39,6 +39,11 @@ class CreateCard extends Component {
   }
 
   render(){
+    const answerIsEmpty = this.state.question.trim().length !== 0;
+    const questionIsEmpty = this.state.answer.trim().length !== 0;
+    const submitAllowed = answerIsEmpty && questionIsEmpty;
+    const sumbitButtonStyle = submitAllowed ? styles.button : [styles.button, styles.disabledButton];
+    const submitButtonTextStyle = submitAllowed ? styles.buttonText : [styles.buttonText, styles.disabledButtonText];
     return(
       <KeyboardAvoidingView style={styles.container}>
         <View>
@@ -59,7 +64,7 @@ class CreateCard extends Component {
             >
           </TextInput>
         </View>
-        <TouchableOpacity onPress={this.onSubmit} style={styles.button}><Text>Submit</Text></TouchableOpacity>
+        <TouchableOpacity disabled={!submitAllowed} onPress={this.onSubmit} style={sumbitButtonStyle}><Text style={submitButtonTextStyle}>Submit</Text></TouchableOpacity>
       </KeyboardAvoidingView>
     )
   }

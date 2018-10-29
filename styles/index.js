@@ -72,5 +72,13 @@ export default styles = StyleSheet.create({
   buttonText: {
     fontWeight: 'bold',
     color: white,
-  }
+  },
+  disabledButton: {
+    backgroundColor : white,
+    borderWidth:1,
+  },
+  disabledButtonText: {
+    color: gray,
+    fontStyle: 'italic'
+  },
 });
