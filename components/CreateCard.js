@@ -43,7 +43,7 @@ class CreateCard extends Component {
       <View style={styles.container}>
         <TextInput value={this.state.question} placeholder={'Question'} onChangeText={this.onQuestionTextChange} ></TextInput>
         <TextInput value={this.state.answer} placeholder={'Answer'} onChangeText={this.onAnswerTextChange} ></TextInput>
-        <TouchableOpacity onPress={this.onSubmit}><Text>Submit</Text></TouchableOpacity>
+        <TouchableOpacity onPress={this.onSubmit} style={styles.button}><Text>Submit</Text></TouchableOpacity>
       </View>
     )
   }

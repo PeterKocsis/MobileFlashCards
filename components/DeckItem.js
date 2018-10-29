@@ -13,7 +13,7 @@ class DeckItem extends Component {
     const {decks, navigation} = this.props;
     const deck = decks[item];
     return (
-      <TouchableOpacity onPress={()=>navigation.navigate('DeckView', {deckId:item})}>
+      <TouchableOpacity onPress={()=>navigation.navigate('DeckView', {deckId:item})} style={styles.card}>
         <Text>{deck.title}</Text>
         <Text>{`Number of cards: ${deck.questions.length}`}</Text>
       </TouchableOpacity>

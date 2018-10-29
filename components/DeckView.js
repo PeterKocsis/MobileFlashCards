@@ -21,11 +21,23 @@ class DeckView extends Component {
     const {deck, navigation} = this.props;
     return(
       <View style={styles.container}>
-        <Text>{deck.title}</Text>
-        <Text>{`Number of cards: ${deck.questions.length}`}</Text>
-        <TouchableOpacity onPress={()=>navigation.navigate('CreateCard', {deckId: deck.title})}><Text>Add Card</Text></TouchableOpacity>
-        <TouchableOpacity onPress={()=>navigation.navigate('Quize', {deckId: deck.title})}><Text>Start Quize</Text></TouchableOpacity>
-        <TouchableOpacity onPress={this.onDeckDelete}><Text>Delete Deck</Text></TouchableOpacity>
+        <View>
+          <Text>{deck.title}</Text>
+          <Text>{`Number of cards: ${deck.questions.length}`}</Text>
+        </View>
+        <View>
+        <TouchableOpacity
+          onPress={()=>navigation.navigate('CreateCard', {deckId: deck.title})}
+          style={styles.button}
+          ><Text>Add Card</Text></TouchableOpacity>
+        <TouchableOpacity
+          onPress={()=>navigation.navigate('Quize', {deckId: deck.title})}
+          style={styles.button}
+          ><Text>Start Quize</Text></TouchableOpacity>
+        <TouchableOpacity
+          onPress={this.onDeckDelete}
+          style={styles.button}><Text>Delete Deck</Text></TouchableOpacity>
+        </View>
       </View>
     )
   }
