@@ -4,6 +4,8 @@ import { View, TouchableOpacity, Text} from 'react-native';
 import styles from './../styles/index';
 import { handleDeleteDeck } from '../actions';
 import { StackActions, NavigationActions } from 'react-navigation';
+import { StyleSheet } from 'react-native';
+import { lightPurp, gray, orange, black, purple, blue, white, green, red } from './../utils/colors';
 
 class DeckView extends Component {
 
@@ -22,21 +24,23 @@ class DeckView extends Component {
     return(
       <View style={styles.container}>
         <View>
-          <Text>{deck.title}</Text>
-          <Text>{`Number of cards: ${deck.questions.length}`}</Text>
+          <Text style={styles.title}>{deck.title}</Text>
+          <Text style={styles.subtitle}>{`Cards: ${deck.questions.length}`}</Text>
         </View>
         <View>
-        <TouchableOpacity
-          onPress={()=>navigation.navigate('CreateCard', {deckId: deck.title})}
-          style={styles.button}
-          ><Text>Add Card</Text></TouchableOpacity>
-        <TouchableOpacity
-          onPress={()=>navigation.navigate('Quize', {deckId: deck.title})}
-          style={styles.button}
-          ><Text>Start Quize</Text></TouchableOpacity>
-        <TouchableOpacity
-          onPress={this.onDeckDelete}
-          style={styles.button}><Text>Delete Deck</Text></TouchableOpacity>
+          <TouchableOpacity
+            onPress={()=>navigation.navigate('CreateCard', {deckId: deck.title})}
+            style={styles.button}
+            ><Text style={{color: white, fontWeight: 'bold'}}>Add Card</Text></TouchableOpacity>
+          <TouchableOpacity
+            onPress={()=>navigation.navigate('Quize', {deckId: deck.title})}
+            style={styles.button}
+            ><Text style={{color: white, fontWeight: 'bold'}}>Start Quize</Text></TouchableOpacity>
+          <TouchableOpacity
+            onPress={this.onDeckDelete}
+            style={[styles.button, local.deleteButton]}>
+              <Text style={{color: red, fontWeight: 'bold'}}>Delete Deck</Text>
+          </TouchableOpacity>
         </View>
       </View>
     )
@@ -52,3 +56,11 @@ function mapStateToProps(decks, {navigation}){
 }
 
 export default connect(mapStateToProps)(DeckView);
+
+const local = StyleSheet.create({
+  deleteButton: {
+    backgroundColor: white,
+    borderColor: black,
+    borderWidth: 1,
+  }
+})

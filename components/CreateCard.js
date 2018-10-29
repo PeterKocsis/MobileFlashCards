@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import styles from './../styles/index';
-import { View, TextInput, TouchableOpacity, Text } from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, KeyboardAvoidingView } from 'react-native';
 import { addQuestion } from './../actions/index';
 import { _addQuestion } from '../utils/api';
 
@@ -40,11 +40,27 @@ class CreateCard extends Component {
 
   render(){
     return(
-      <View style={styles.container}>
-        <TextInput value={this.state.question} placeholder={'Question'} onChangeText={this.onQuestionTextChange} ></TextInput>
-        <TextInput value={this.state.answer} placeholder={'Answer'} onChangeText={this.onAnswerTextChange} ></TextInput>
+      <KeyboardAvoidingView style={styles.container}>
+        <View>
+          <TextInput
+            value={this.state.question}
+            placeholder={'Question'}
+            onChangeText={this.onQuestionTextChange}
+            style={styles.input}
+            underlineColorAndroid='transparent'
+            >
+          </TextInput>
+          <TextInput
+            value={this.state.answer}
+            placeholder={'Answer'}
+            onChangeText={this.onAnswerTextChange}
+            style={styles.input}
+            underlineColorAndroid='transparent'
+            >
+          </TextInput>
+        </View>
         <TouchableOpacity onPress={this.onSubmit} style={styles.button}><Text>Submit</Text></TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }

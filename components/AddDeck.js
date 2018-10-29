@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
-import { View, TextInput, TouchableOpacity, Text} from 'react-native';
+import { View, TextInput, TouchableOpacity, Text, KeyboardAvoidingView} from 'react-native';
 import { handleAddDeck } from './../actions/index';
 import styles from './../styles/index';
 
@@ -33,11 +33,20 @@ class AddDeck extends Component {
 
   render(){
     return(
-      <View style={styles.container}>
-        <Text>What is the title of your new deck?</Text>
-        <TextInput value={this.state.title} onChangeText={this.onTitleChange}  placeholder='Title of the deck' ></TextInput>
+      <KeyboardAvoidingView style={styles.container}>
+        <View style={{alignItems:'center'}}>
+          <Text style={styles.title}>What is the title of your new deck?</Text>
+          <TextInput
+            value={this.state.title}
+            onChangeText={this.onTitleChange}
+            placeholder='Title of the deck'
+            style={styles.input}
+            underlineColorAndroid='transparent'
+            >
+          </TextInput>
+        </View>
         <TouchableOpacity onPress={this.onSubmit} style={styles.button}><Text>Create Deck</Text></TouchableOpacity>
-      </View>
+      </KeyboardAvoidingView>
     )
   }
 }

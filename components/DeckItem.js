@@ -14,8 +14,8 @@ class DeckItem extends Component {
     const deck = decks[item];
     return (
       <TouchableOpacity onPress={()=>navigation.navigate('DeckView', {deckId:item})} style={styles.card}>
-        <Text>{deck.title}</Text>
-        <Text>{`Number of cards: ${deck.questions.length}`}</Text>
+        <Text style={styles.mainText}>{deck.title}</Text>
+        <Text style={styles.text}>{`Cards: ${deck.questions.length}`}</Text>
       </TouchableOpacity>
     );
   }
