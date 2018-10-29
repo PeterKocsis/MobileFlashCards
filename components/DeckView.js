@@ -31,11 +31,11 @@ class DeckView extends Component {
           <TouchableOpacity
             onPress={()=>navigation.navigate('CreateCard', {deckId: deck.title})}
             style={styles.button}
-            ><Text style={{color: white, fontWeight: 'bold'}}>Add Card</Text></TouchableOpacity>
+            ><Text style={styles.buttonText}>Add Card</Text></TouchableOpacity>
           <TouchableOpacity
             onPress={()=>navigation.navigate('Quize', {deckId: deck.title})}
             style={styles.button}
-            ><Text style={{color: white, fontWeight: 'bold'}}>Start Quize</Text></TouchableOpacity>
+            ><Text style={styles.buttonText}>Start Quiz</Text></TouchableOpacity>
           <TouchableOpacity
             onPress={this.onDeckDelete}
             style={[styles.button, local.deleteButton]}>

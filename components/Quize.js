@@ -4,7 +4,7 @@ import { View, Text, TouchableOpacity } from 'react-native';
 import styles from './../styles/index';
 import { StackActions } from 'react-navigation';
 import { StyleSheet } from 'react-native';
-import { lightPurp, gray, orange, black, purple, blue, white, green, red } from './../utils/colors';
+import { white, green, red } from './../utils/colors';
 
 class Quize extends Component {
 
@@ -20,25 +20,25 @@ class Quize extends Component {
     }));
   }
 
-  handleAnswer=(newState)=>{
-    const {deck, numberOfCards, navigation} = this.props;
+  handleAnswer = (newState) => {
+    const { deck, numberOfCards, navigation } = this.props;
     Promise.resolve(
       this.setState({
         ...newState
       })
     )
-    .then(()=>{
-      const replaceAction = StackActions.replace({
-        routeName: 'QuizeResult',
-        params: {
-          deckId: deck.title,
-          score: this.state.score
+      .then(() => {
+        const replaceAction = StackActions.replace({
+          routeName: 'QuizeResult',
+          params: {
+            deckId: deck.title,
+            score: this.state.score
+          }
+        })
+        if (this.state.cardIndex === numberOfCards) {
+          navigation.dispatch(replaceAction);
         }
-      })
-      if(this.state.cardIndex === numberOfCards) {
-        navigation.dispatch(replaceAction);
-      }
-    });
+      });
   }
 
   onCorrectAnswer = () => {
@@ -62,7 +62,7 @@ class Quize extends Component {
   render() {
     const { deck, numberOfCards } = this.props;
 
-    if(numberOfCards === 0) {
+    if (numberOfCards === 0) {
       return (
         <View style={styles.container}>
           <Text style={styles.title}>There is no card in the deck, please add some before you start the quize.</Text>
@@ -70,36 +70,35 @@ class Quize extends Component {
       )
     }
 
-    if(numberOfCards === this.state.cardIndex)
-    {
+    if (numberOfCards === this.state.cardIndex) {
       //This is a blank view which will be show only for a friction of second until the QuizeResult view will be visible
       return (
         <View style={styles.container}>
         </View>
       )
     }
-    else{
+    else {
       const questionCard = deck.questions[this.state.cardIndex];
       return (
         <View style={styles.container}>
           <View style={styles.card}>
-            <Text style={styles.title}>{`${this.state.cardIndex + 1}/${numberOfCards}`}</Text>
-            <Text style={styles.title}>{this.state.showAnswer ? questionCard.answer : questionCard.question}</Text>
+            <Text style={[styles.subtitle]}>{`${this.state.cardIndex + 1}/${numberOfCards}`}</Text>
+            <Text style={[styles.title, local.cardText]}>{this.state.showAnswer ? questionCard.answer : questionCard.question}</Text>
             <TouchableOpacity
               style={local.flipCard}
               onPress={this.onCardFlip}>
-                <Text>{this.state.showAnswer ? "Show Question" : "Show Answer"}</Text>
+              <Text style={[styles.buttonText, local.fliCardText]}>{this.state.showAnswer ? "Show Question" : "Show Answer"}</Text>
             </TouchableOpacity>
           </View>
           <TouchableOpacity
             onPress={this.onCorrectAnswer}
             style={local.correct}>
-              <Text>Correct</Text>
+            <Text style={styles.buttonText}>Correct</Text>
           </TouchableOpacity>
           <TouchableOpacity
             onPress={this.onIncorrectAnswer}
             style={local.incorrect}>
-              <Text>Incorrect</Text>
+            <Text style={styles.buttonText}>Incorrect</Text>
           </TouchableOpacity>
         </View>
       )
@@ -144,10 +143,8 @@ local = StyleSheet.create({
     justifyContent: 'center',
     alignItems: 'center',
   },
-  flipCard : {
+  flipCard: {
     padding: 10,
-    paddingLeft: 30,
-    paddingRight: 30,
     margin: 7,
     height: 45,
     width: 150,
@@ -155,7 +152,12 @@ local = StyleSheet.create({
     borderWidth: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: 'rgba(255,255,255, 0.6)'
   },
-
-
+  fliCardText: {
+    color: red,
+  },
+  cardText: {
+    color: white,
+  }
 })

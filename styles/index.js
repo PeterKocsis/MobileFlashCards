@@ -11,8 +11,8 @@ export default styles = StyleSheet.create({
   button : {
     backgroundColor: lightPurp,
     padding: 10,
-    paddingLeft: 30,
-    paddingRight: 30,
+    paddingLeft: 10,
+    paddingRight: 10,
     margin: 7,
     height: 45,
     width: 150,
@@ -68,5 +68,9 @@ export default styles = StyleSheet.create({
   },
   row:{
     flexDirection: 'row',
+  },
+  buttonText: {
+    fontWeight: 'bold',
+    color: white,
   }
 });
