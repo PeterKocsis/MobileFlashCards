@@ -35,10 +35,12 @@ class QuizeResult extends Component {
     const {score, possibleMaxScore} = this.props;
     return(
       <View style={styles.container}>
-        <Text>Your score is:</Text>
-        <Text>{`${score}/${possibleMaxScore}`}</Text>
-        <TouchableOpacity onPress={this.onQuizeRestart}><Text>Restart Quize</Text></TouchableOpacity>
-        <TouchableOpacity onPress={this.onBackToDeck}><Text>Back to Deck</Text></TouchableOpacity>
+        <Text style={styles.title}>Your Result:</Text>
+        <Text style={{fontSize:32, fontWeight:'bold', color:'green'}}>{`${((score / possibleMaxScore)*100).toFixed(2)}%`}</Text>
+        <View style={styles.row}>
+          <TouchableOpacity style={styles.button} onPress={this.onQuizeRestart}><Text style={styles.buttonText}>Restart Quize</Text></TouchableOpacity>
+          <TouchableOpacity style={styles.button} onPress={this.onBackToDeck}><Text style={styles.buttonText}>Back to Deck</Text></TouchableOpacity>
+        </View>
       </View>
     )
   }

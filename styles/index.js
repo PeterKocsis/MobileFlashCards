@@ -68,6 +68,7 @@ export default styles = StyleSheet.create({
   },
   row:{
     flexDirection: 'row',
+    justifyContent: 'space-around',
   },
   buttonText: {
     fontWeight: 'bold',
