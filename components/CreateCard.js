@@ -6,6 +6,11 @@ import { addQuestion } from './../actions/index';
 import { _addQuestion } from '../utils/api';
 
 class CreateCard extends Component {
+  static navigationOptions = () =>{
+    return {
+      title: 'Create Card'
+    }
+  }
 
   state={
     question:'',

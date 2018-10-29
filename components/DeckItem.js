@@ -5,6 +5,7 @@ import styles from './../styles/index';
 import { handleReceiveDecks } from './../actions/index';
 
 class DeckItem extends Component {
+
   componentDidMount() {
     this.props.dispatch(handleReceiveDecks());
   }
@@ -31,7 +32,7 @@ class DeckItem extends Component {
     debugger
     return(
       <View style={styles.container}>
-        {noDeckinDecks ? (<Text>There is no available deck at the moment. You can create one on the "Add Deck" tab.</Text>)
+        {noDeckinDecks ? (<Text style={styles.title}>No deck has been created. You can create your own deck on the "Add Deck" tab.</Text>)
         :<FlatList
           data = {Object.keys(decks)}
           renderItem={this.renderItem}

@@ -9,7 +9,7 @@ export default styles = StyleSheet.create({
     padding:30,
   },
   button : {
-    backgroundColor: lightPurp,
+    backgroundColor: purple,
     padding: 10,
     paddingLeft: 10,
     paddingRight: 10,

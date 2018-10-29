@@ -7,6 +7,11 @@ import { StyleSheet } from 'react-native';
 import { white, green, red } from './../utils/colors';
 
 class Quize extends Component {
+  static navigationOptions = () =>{
+    return {
+      title: 'Quiz'
+    }
+  }
 
   state = {
     cardIndex: 0,
@@ -65,7 +70,7 @@ class Quize extends Component {
     if (numberOfCards === 0) {
       return (
         <View style={styles.container}>
-          <Text style={styles.title}>There is no card in the deck, please add some before you start the quize.</Text>
+          <Text style={styles.title}>There is no card in the deck, please add some before you start the quiz.</Text>
         </View>
       )
     }

@@ -6,6 +6,11 @@ import { StackActions } from 'react-navigation';
 import { clearLocalNotification } from './../utils/notificationHelper';
 
 class QuizeResult extends Component {
+  static navigationOptions = () =>{
+    return {
+      title: 'Quiz Result'
+    }
+  }
 
   componentDidMount(){
     clearLocalNotification();

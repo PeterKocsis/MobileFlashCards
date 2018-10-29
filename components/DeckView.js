@@ -8,6 +8,11 @@ import { StyleSheet } from 'react-native';
 import { lightPurp, gray, orange, black, purple, blue, white, green, red } from './../utils/colors';
 
 class DeckView extends Component {
+  static navigationOptions = () =>{
+    return {
+      title: 'Selected Deck'
+    }
+  }
 
   onDeckDelete = () => {
     const { dispatch, deck } = this.props;
