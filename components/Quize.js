@@ -84,20 +84,12 @@ class Quize extends Component {
         <View style={styles.container}>
           <View style={styles.card}>
             <Text style={styles.title}>{`${this.state.cardIndex + 1}/${numberOfCards}`}</Text>
-            {this.state.showAnswer
-              ? (
-                <View style={{justifyContent:'space-between'}}>
-                  <Text style={styles.title}>{questionCard.answer}</Text>
-                  <TouchableOpacity style={local.flipCard} onPress={this.onCardFlip}><Text>Show Question</Text></TouchableOpacity>
-                </View>
-              )
-              : (
-                <View style={{justifyContent:'space-between'}}>
-                  <Text style={styles.title}>{questionCard.question}</Text>
-                  <TouchableOpacity style={local.flipCard} onPress={this.onCardFlip}><Text>Show Answer</Text></TouchableOpacity>
-                </View>
-              )
-            }
+            <Text style={styles.title}>{this.state.showAnswer ? questionCard.answer : questionCard.question}</Text>
+            <TouchableOpacity
+              style={local.flipCard}
+              onPress={this.onCardFlip}>
+                <Text>{this.state.showAnswer ? "Show Question" : "Show Answer"}</Text>
+            </TouchableOpacity>
           </View>
           <TouchableOpacity
             onPress={this.onCorrectAnswer}
