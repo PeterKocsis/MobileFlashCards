@@ -1,23 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { View, Text, TouchableOpacity, FlatList } from 'react-native';
+import { View, Text, TouchableOpacity, FlatList, Animated } from 'react-native';
 import styles from './../styles/index';
 import { handleReceiveDecks } from './../actions/index';
 
 class DeckItem extends Component {
 
+  state={
+    bounceAnim : new Animated.Value(1),
+  }
+
   componentDidMount() {
     this.props.dispatch(handleReceiveDecks());
+  }
+
+  onDeckSelection=(item)=>{
+    const {navigation} = this.props;
+    Animated.sequence([
+      Animated.timing(this.state.bounceAnim, { duration: 200, toValue: 1.04}),
+      Animated.spring(this.state.bounceAnim, { toValue: 1, friction: 4})
+    ]).start(()=>navigation.navigate('DeckView', {deckId:item}))
   }
 
   renderItem=({item})=>{
     const {decks, navigation} = this.props;
     const deck = decks[item];
     return (
-      <TouchableOpacity onPress={()=>navigation.navigate('DeckView', {deckId:item})} style={styles.card}>
-        <Text style={styles.mainText}>{deck.title}</Text>
-        <Text style={styles.text}>{`Cards: ${deck.questions.length}`}</Text>
-      </TouchableOpacity>
+      <Animated.View style={{transform: [{scale: this.state.bounceAnim}]}}>
+        <TouchableOpacity
+          onPress={()=>this.onDeckSelection(item)}
+          style={styles.card}>
+          <Text style={styles.mainText}>{deck.title}</Text>
+          <Text style={styles.text}>{`Cards: ${deck.questions.length}`}</Text>
+        </TouchableOpacity>
+      </Animated.View>
     );
   }
 
