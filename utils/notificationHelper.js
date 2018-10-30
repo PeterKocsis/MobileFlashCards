@@ -3,7 +3,7 @@ import { AsyncStorage } from 'react-native';
 
 const NOTIFICATION_KEY = "FlashCards:notification";
 
-function createNotification () {
+function createNotification() {
   return {
     title: 'Make a Quize!',
     body: "👋 don't forget to challenge yourself everyday!",
@@ -19,19 +19,19 @@ function createNotification () {
   }
 }
 
-export function clearLocalNotification () {
+export function clearLocalNotification() {
   console.log("Delete notification");
   return AsyncStorage.removeItem(NOTIFICATION_KEY)
     .then(Notifications.cancelAllScheduledNotificationsAsync)
 }
 
-export function setLocalNotification () {
+export function setLocalNotification() {
   console.log("Try to set notification");
-  AsyncStorage.getAllKeys().then(keys=>keys.map(key=>console.log(key)));
+  AsyncStorage.getAllKeys().then(keys => keys.map(key => console.log(key)));
   return AsyncStorage.getAllKeys()
-    .then(keys => keys.filter(key=>key===NOTIFICATION_KEY))
-    .then((machingKeys)=>{
-      if(machingKeys.length === 0){
+    .then(keys => keys.filter(key => key === NOTIFICATION_KEY))
+    .then((machingKeys) => {
+      if (machingKeys.length === 0) {
         console.log("Notification has not been set yet");
         Permissions.askAsync(Permissions.NOTIFICATIONS)
           .then(({ status }) => {

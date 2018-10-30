@@ -19,7 +19,7 @@ function decks(state = {}, action) {
       return { ...action.decks }
     }
     case DELETE_DECK: {
-      const modifiedData = {...state};
+      const modifiedData = { ...state };
       modifiedData[action.deckId] = undefined;
       delete modifiedData[action.deckId];
       return {

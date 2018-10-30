@@ -1,12 +1,10 @@
 import React from 'react';
-import { StyleSheet, Text, View, Platform } from 'react-native';
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import reducer from './reducers'
 import AddDeck from './components/AddDeck';
-import { white, purple, lightPurp, gray} from './utils/colors';
-import { FontAwesome, Ionicons } from '@expo/vector-icons'
-import { createBottomTabNavigator , createStackNavigator} from 'react-navigation';
+import { white, purple, gray } from './utils/colors';
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import middleware from './middleware';
 import DeckView from './components/DeckView';
 import DeckItem from './components/DeckItem';
@@ -37,7 +35,7 @@ const Tabs = createBottomTabNavigator(
     tabBarOptions: {
       activeTintColor: white,
       inactiveTintColor: gray,
-      labelStyle: {fontSize: 16},
+      labelStyle: { fontSize: 16 },
       style: {
         height: 56,
         backgroundColor: purple,
@@ -55,7 +53,7 @@ const Tabs = createBottomTabNavigator(
 
 const MainNavigation = createStackNavigator({
   Home: {
-    screen : Tabs,
+    screen: Tabs,
     navigationOptions: {
       headerTintColor: white,
       headerStyle: {
@@ -72,7 +70,7 @@ const MainNavigation = createStackNavigator({
       }
     }
   },
-  CreateCard:{
+  CreateCard: {
     screen: CreateCard,
     navigationOptions: {
       headerTintColor: white,
@@ -103,7 +101,7 @@ const MainNavigation = createStackNavigator({
 
 export default class App extends React.Component {
 
-  componentDidMount(){
+  componentDidMount() {
     setLocalNotification();
   }
 

@@ -11,8 +11,8 @@ class DeckItem extends Component {
     this.props.dispatch(handleReceiveDecks());
   }
 
-  renderItem=({item})=>{
-    const {decks, navigation} = this.props;
+  renderItem = ({ item }) => {
+    const { decks, navigation } = this.props;
     const deck = decks[item];
     debugger
     return (
@@ -20,29 +20,29 @@ class DeckItem extends Component {
     );
   }
 
-  keyExtractor = (item, index)=> {
-    const  {decks} = this.props;
+  keyExtractor = (item, index) => {
+    const { decks } = this.props;
     return decks[item].title;
   };
 
-  render(){
-    const {decks} = this.props;
+  render() {
+    const { decks } = this.props;
     const noDeckinDecks = Object.getOwnPropertyNames(decks).length === 0;
     debugger
-    return(
+    return (
       <View style={styles.container}>
         {noDeckinDecks ? (<Text style={styles.title}>You can create your own deck on the "Create Deck" tab.</Text>)
-        :<FlatList
-          data = {Object.keys(decks)}
-          renderItem={this.renderItem}
-          keyExtractor = {this.keyExtractor}>
-        </FlatList>}
+          : <FlatList
+            data={Object.keys(decks)}
+            renderItem={this.renderItem}
+            keyExtractor={this.keyExtractor}>
+          </FlatList>}
       </View>
     )
   }
 }
 
-function mapStateToProps(decks, {navigation}){
+function mapStateToProps(decks, { navigation }) {
   return {
     navigation,
     decks

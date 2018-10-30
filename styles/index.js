@@ -6,9 +6,9 @@ export default styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'space-around',
-    padding:30,
+    padding: 30,
   },
-  button : {
+  button: {
     backgroundColor: purple,
     padding: 10,
     paddingLeft: 10,
@@ -32,7 +32,7 @@ export default styles = StyleSheet.create({
     justifyContent: 'space-between',
     alignItems: 'center',
     width: 250,
-    flex:1,
+    flex: 1,
   },
   mainText: {
     color: white,
@@ -40,7 +40,7 @@ export default styles = StyleSheet.create({
     textAlign: 'center',
     fontWeight: 'bold',
   },
-  text : {
+  text: {
     color: '#aaa',
     fontSize: 12,
     textAlign: 'center',
@@ -56,17 +56,17 @@ export default styles = StyleSheet.create({
     textAlign: 'center',
     color: '#aaa',
   },
-  input:{
+  input: {
     width: 300,
-    borderRadius:2,
-    borderWidth:1,
+    borderRadius: 2,
+    borderWidth: 1,
     borderColor: black,
     marginTop: 10,
     marginBottom: 10,
-    paddingLeft:10,
+    paddingLeft: 10,
     paddingRight: 10,
   },
-  row:{
+  row: {
     flexDirection: 'row',
     justifyContent: 'space-around',
   },
@@ -75,8 +75,8 @@ export default styles = StyleSheet.create({
     color: white,
   },
   disabledButton: {
-    backgroundColor : white,
-    borderWidth:1,
+    backgroundColor: white,
+    borderWidth: 1,
   },
   disabledButtonText: {
     color: gray,

@@ -1,20 +1,20 @@
-import {AsyncStorage} from 'react-native';
+import { AsyncStorage } from 'react-native';
 
 const DECKS_KEY = 'FlashCards:Decks'
 
 export function _getDecks() {
   return AsyncStorage.getAllKeys()
-    .then(keys => keys.filter(key=>key===DECKS_KEY))
-    .then((machingKeys)=>{
-      if(machingKeys.length > 0){
+    .then(keys => keys.filter(key => key === DECKS_KEY))
+    .then((machingKeys) => {
+      if (machingKeys.length > 0) {
         return AsyncStorage.getItem(DECKS_KEY)
-          .then(result=>JSON.parse(result));
+          .then(result => JSON.parse(result));
       }
       else {
         return AsyncStorage.setItem(DECKS_KEY, "{}")
-          .then(()=>{
+          .then(() => {
             return AsyncStorage.getItem(DECKS_KEY)
-              .then(result=>JSON.parse(result));
+              .then(result => JSON.parse(result));
           });
       }
     });
@@ -23,7 +23,7 @@ export function _getDecks() {
 export function _addDeck(deck) {
   return AsyncStorage.mergeItem(DECKS_KEY, JSON.stringify(
     {
-      [deck.title]:deck
+      [deck.title]: deck
     }));
 }
 
@@ -40,7 +40,7 @@ export function _addQuestion(deck, question) {
 
 export function _deleteDeck(deckId) {
   return AsyncStorage.getItem(DECKS_KEY)
-    .then((result)=>{
+    .then((result) => {
       const data = JSON.parse(result);
       data[deckId] = undefined;
       delete data[deckId];

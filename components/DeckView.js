@@ -5,10 +5,10 @@ import styles from './../styles/index';
 import { handleDeleteDeck } from '../actions';
 import { StackActions, NavigationActions } from 'react-navigation';
 import { StyleSheet } from 'react-native';
-import { lightPurp, gray, orange, black, purple, blue, white, green, red } from './../utils/colors';
+import { black, white, red } from './../utils/colors';
 
 class DeckView extends Component {
-  static navigationOptions = () =>{
+  static navigationOptions = () => {
     return {
       title: 'Selected Deck'
     }

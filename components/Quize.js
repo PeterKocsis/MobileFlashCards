@@ -7,7 +7,7 @@ import { StyleSheet } from 'react-native';
 import { white, green, red } from './../utils/colors';
 
 class Quize extends Component {
-  static navigationOptions = () =>{
+  static navigationOptions = () => {
     return {
       title: 'Quiz'
     }
